@@ -152,7 +152,15 @@ namespace MyOutlookTagger
                 updateEntireConversation(mail);
             }
         }
-        public void setNewCategories(Outlook.MeetingItem meeting, string newCats) { }
+        public void setNewCategories(Outlook.MeetingItem meeting, string newCats)
+        {
+            checkTagsExists(newCats);
+            if(meeting != null)
+            {
+                meeting.Categories = newCats;
+                meeting.Save();
+            }
+        }
 
         public void checkTagsExists(string categories)
         {
